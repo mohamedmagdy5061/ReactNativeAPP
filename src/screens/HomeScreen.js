@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
-import { black } from 'ansi-colors';
+import TodoList from '../components/TodoList' 
 
 const HomeScreen = () => {
     const [todo, setTodo] = useState('')
+    const [todoLists, setTodoLists] = useState([])
 
-    const handleInputAddTodo = (input) => {
-        setTodo(input)
+    const handleInputTodo = (inputValue) => {
+        setTodo(inputValue);
+
     }
+    const handleAddTodoButton = () => {
+        setTodoLists( todoLists => [...todoLists, todo] ) ;
+        setTodo('');
+
+    }
+
 
   return (
     <View style={styles.container}>
@@ -16,9 +24,12 @@ const HomeScreen = () => {
                 placeholder='Add todo'
                 style={styles.input}
                 value={todo}
-                onChangeText={handleInputAddTodo}
+                onChangeText={handleInputTodo}
                 />
-            <Button title='ADD' onPress={(x)=>console.log(x)}  />
+            <Button title='ADD' onPress={handleAddTodoButton}  />
+        </View>
+        <View>
+            {todoLists.map(item => <TodoList data={item} />) }
         </View>
     </View>
   );
