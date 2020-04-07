@@ -1,43 +1,48 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button, TextInput } from 'react-native';
 import {
-  Container,
-  Header,
-  Content,
-  Form,
-  Item,
-  Input,
-  Label
-} from 'native-base';
+  StyleSheet,
+  View,
+  Text,
+  Button,
+  TextInput,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Platform
+} from 'react-native';
 
 import Logo from '../components/Logo';
+import LoginForm from '../components/LoginForm'
+import FooterLogin from '../components/FooterLogin'
+
 
 const LoginScreen = () => {
   return (
-    <View>
-      <Logo />
 
-      <View>
-        <TextInput placeholder="User Name" />
-        <TextInput placeholder="Password" />
-        <Button title="Login" />
+    <>
+    <KeyboardAvoidingView
+      behavior={Platform.Os == "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={{backgroundColor:'gray',flex:1}}>
+      <Logo />
+      <LoginForm />
+      <FooterLogin />
       </View>
-      <View>
-          <Form>
-            <Item floatingLabel>
-              <Label style={{color:'green'}}>Username</Label>
-              <Input />
-            </Item>
-            <Item floatingLabel last>
-              <Label>Password</Label>
-              <Input />
-            </Item>
-          </Form>
-      </View>
-    </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
+
+    </>
   );
 };
+// 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
 
-const styles = StyleSheet.create({});
+});
 
 export default LoginScreen;

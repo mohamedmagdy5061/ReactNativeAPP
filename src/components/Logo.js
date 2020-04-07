@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button, Image } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 
 
 function Logo() {
@@ -13,8 +13,10 @@ function Logo() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        // justifyContent: 'center'
+        flex: 2,
+        justifyContent: 'flex-end',
+        alignItems: 'center'
+
     },
     logoImage: {
         width: 150,
@@ -22,6 +24,7 @@ const styles = StyleSheet.create({
         borderRadius: 300/2,
         backgroundColor: '#9a0007',
         alignSelf: 'center',
+        
     }
 
 

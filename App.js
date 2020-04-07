@@ -2,13 +2,15 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from './src/screens/HomeScreen';
+// import HomeScreen from './src/screens/HomeScreen';
 import LoginScreen from './src/screens/LoginScreen'
+import LoginForm from './src/components/LoginForm'
+
 
 const Stack = createStackNavigator();
 
 const ScreenOptions = {
-  title:'Home',
+  title:'Login',
   headerTintColor: 'white',
   headerStyle: { backgroundColor: '#E34C4F' },
 }
@@ -19,7 +21,7 @@ export default function App() {
     <NavigationContainer>
     <Stack.Navigator>
       <Stack.Screen
-        name="Home"
+        name="Login"
         component={LoginScreen}
         options={ScreenOptions}
       />
@@ -35,6 +37,8 @@ export default function App() {
 
     </Stack.Navigator>
   </NavigationContainer>
+
+  // <LoginScreen />
   );
 }
 
