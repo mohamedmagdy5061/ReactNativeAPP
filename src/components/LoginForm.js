@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
   Text,
   TextInput,
   TouchableOpacity,
+  ActivityIndicator
 } from 'react-native';
 
-import Logo from '../components/Logo';
-
 const LoginForm = () => {
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    const handleSignIn = () => {
+        console.log('Sign In pressed')
+        setIsLoaded(true);
+        setTimeout(() => {
+             setIsLoaded(false)
+        },3000)
+    }
+
   return (
     <View style={styles.formContainer}>
       <TextInput
@@ -18,6 +27,7 @@ const LoginForm = () => {
         placeholderTextColor="rgba(0, 0, 0, 0.55)"
         autoCapitalize='none'
         autoCorrect={false}
+        keyboardType='email-address'
       />
       <TextInput
         style={styles.input}
@@ -25,12 +35,15 @@ const LoginForm = () => {
         placeholderTextColor="rgba(0, 0, 0, 0.55)"
         autoCapitalize='none'
         autoCorrect={false}
+        secureTextEntry
       />
       <TouchableOpacity
         style={styles.button}
-        onPress={() => console.log('Sign In pressed')}
+        onPress={handleSignIn}
       >
-        <Text style={styles.textButton}>Sign In</Text>
+        {!isLoaded ? <Text style={styles.textButton}>Sign In</Text> :
+        <ActivityIndicator  style={styles.textButton}  color="rgba(255, 255, 255, 0.8)" />}
+
       </TouchableOpacity>
     </View>
     
@@ -45,7 +58,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'gray'
   },
   input: {
-    backgroundColor: '#ef9a9a',
+    backgroundColor: '#439889',
     width: '80%',
     paddingVertical: 10,
     marginVertical: 10,
@@ -54,19 +67,20 @@ const styles = StyleSheet.create({
     color: '#000'
   },
   button: {
-    borderColor: '#ba6b6c',
+    borderColor: '#003d33',
     borderWidth: 1,
     borderRadius: 3,
-    backgroundColor: '#ba6b6c',
+    backgroundColor: '#004d40',
     alignSelf: 'center',
     width: '80%',
-    marginVertical: 5
+    marginVertical: 5,
 
   },
   textButton: {
     fontSize: 16,
     alignSelf: 'center',
-    paddingVertical: 5
+    paddingVertical: 8,
+    color: '#FFF'
   }
 });
 

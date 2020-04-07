@@ -2,10 +2,6 @@ import React from 'react';
 import {
   StyleSheet,
   View,
-  Text,
-  Button,
-  TextInput,
-  TouchableOpacity,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
@@ -22,11 +18,11 @@ const LoginScreen = () => {
 
     <>
     <KeyboardAvoidingView
-      behavior={Platform.Os == "ios" ? "padding" : "height"}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
     >
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={{backgroundColor:'gray',flex:1}}>
+      <View style={{backgroundColor:'#FFF',flex:1}}>
       <Logo />
       <LoginForm />
       <FooterLogin />

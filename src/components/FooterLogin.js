@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   textButton: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#9b0000'
+    color: '#005b9f'
   }
 });
 
