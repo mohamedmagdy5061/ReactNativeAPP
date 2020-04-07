@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 // import HomeScreen from './src/screens/HomeScreen';
 import LoginScreen from './src/screens/LoginScreen'
 import LoginForm from './src/components/LoginForm'
+import ResetPassword from './src/screens/ResetPassword';
 import { SafeAreaView } from 'react-native';
 
 
@@ -12,17 +13,17 @@ import { SafeAreaView } from 'react-native';
 const Stack = createStackNavigator();
 
 const ScreenOptions = {
-  // headerShown: false,
+  headerShown: false,
   title:'Login',
   headerTintColor: 'white',
-  headerStyle: { backgroundColor: '#E34C4F' },
+  headerStyle: { backgroundColor: '#004d40' },
 }
 
 export default function App() {
   return (
     // <SafeAreaView>
     <NavigationContainer>
-    <Stack.Navigator headerMode='none'>
+    <Stack.Navigator>
     {/* <Stack.Navigator headerMode='none'> */} 
       <Stack.Screen
         name="Login"
@@ -30,14 +31,15 @@ export default function App() {
         options={ScreenOptions}
       />
 
-      {/* <Stack.Screen
-        name="SearchDetails"
-        component={SearchDetails}
+      <Stack.Screen
+        name="ResetPassword"
+        component={ResetPassword}
         options={{
           ...ScreenOptions,
-          title: 'Details Search'
+          title: 'Reset Password',
+          headerShown: true
         }}
-      /> */}
+      />
 
     </Stack.Navigator>
   </NavigationContainer>

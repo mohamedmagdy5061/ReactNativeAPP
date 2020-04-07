@@ -3,20 +3,20 @@ import {
   StyleSheet,
   View,
   Text,
-  Button,
-  TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-  Keyboard
-} from 'react-native';
 
-function FooterLogin() {
+} from 'react-native';
+import { withNavigation } from '@react-navigation/compat';
+
+
+function FooterLogin({ navigation }) {
   return (
     <View style={styles.footer}>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => console.log('Forget password pressed')}
+        // onPress={() => console.log('Forget password pressed',navigation)}
+        onPress={() => navigation.navigate('ResetPassword')}
+
       >
         <Text style={{...styles.textButton, color: '#000'}}>Forget Password?</Text>
       </TouchableOpacity>
@@ -42,9 +42,8 @@ const styles = StyleSheet.create({
   },
   textButton: {
     fontSize: 16,
-    fontWeight: 'bold',
     color: '#005b9f'
   }
 });
 
-export default FooterLogin;
+export default withNavigation(FooterLogin);

@@ -8,7 +8,7 @@ import {
   ActivityIndicator
 } from 'react-native';
 
-const LoginForm = () => {
+const ResetPassword = () => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     const handleSignIn = () => {
@@ -29,19 +29,11 @@ const LoginForm = () => {
         autoCorrect={false}
         keyboardType='email-address'
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        placeholderTextColor="rgba(0, 0, 0, 0.55)"
-        autoCapitalize='none'
-        autoCorrect={false}
-        secureTextEntry
-      />
       <TouchableOpacity
         style={styles.button}
         onPress={handleSignIn}
       >
-        {!isLoaded ? <Text style={styles.textButton}>Sign In</Text> :
+        {!isLoaded ? <Text style={styles.textButton}>Reset Password</Text> :
         <ActivityIndicator  style={styles.textButton}  color="rgba(255, 255, 255, 0.8)" />}
 
       </TouchableOpacity>
@@ -83,4 +75,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default LoginForm;
+export default ResetPassword;
