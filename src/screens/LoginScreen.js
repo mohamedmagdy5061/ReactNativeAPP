@@ -12,10 +12,12 @@ import Logo from '../components/Logo';
 import LoginForm from '../components/LoginForm'
 import FooterLogin from '../components/FooterLogin'
 
+// import { connect } from 'react-redux';
+// import { loginUser } from '../../store/actions'
+
 
 const LoginScreen = () => {
   return (
-
     <>
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -42,3 +44,6 @@ const styles = StyleSheet.create({
 });
 
 export default LoginScreen;
+
+
+// export default connect(null, {loginUser} )(LoginScreen);

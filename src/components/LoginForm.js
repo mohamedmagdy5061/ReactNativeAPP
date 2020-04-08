@@ -7,16 +7,27 @@ import {
   TouchableOpacity,
   ActivityIndicator
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
-const LoginForm = () => {
+import { connect } from 'react-redux';
+import { loginUser } from '../../store/actions'
+
+
+
+
+const LoginForm = (props) => {
     const [isLoaded, setIsLoaded] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('')
 
     const handleSignIn = () => {
-        console.log('Sign In pressed')
+        console.log('Sign In pressed',props)
         setIsLoaded(true);
         setTimeout(() => {
              setIsLoaded(false)
+             loginUser({ email, password })
         },3000)
+       
     }
 
   return (
@@ -28,6 +39,8 @@ const LoginForm = () => {
         autoCapitalize='none'
         autoCorrect={false}
         keyboardType='email-address'
+        value={email}
+        onChangeText={email => setEmail(email)}
       />
       <TextInput
         style={styles.input}
@@ -36,12 +49,16 @@ const LoginForm = () => {
         autoCapitalize='none'
         autoCorrect={false}
         secureTextEntry
+        value={password}
+        onChangeText={password => setPassword(password)}
       />
       <TouchableOpacity
         style={styles.button}
         onPress={handleSignIn}
       >
-        {!isLoaded ? <Text style={styles.textButton}>Sign In</Text> :
+        {!isLoaded ? <Text style={styles.textButton}> Sign In 
+        {/* <Ionicons name="md-checkmark-circle" size={32} color="green" /> */}
+        </Text> :
         <ActivityIndicator  style={styles.textButton}  color="rgba(255, 255, 255, 0.8)" />}
 
       </TouchableOpacity>
@@ -49,6 +66,15 @@ const LoginForm = () => {
     
   );
 };
+
+const mapStateToProps = state => {
+  return {
+    user: state.auth.user,
+    loading: state.auth.loading,
+    error: state.auth.error,
+  }
+}
+
 
 const styles = StyleSheet.create({
   formContainer: {
@@ -83,4 +109,6 @@ const styles = StyleSheet.create({
   }
 });
 
-export default LoginForm;
+// export default LoginForm;
+export default connect(mapStateToProps, {loginUser} )(LoginForm);
+

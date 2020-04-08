@@ -3,8 +3,7 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableOpacity,
-
+  TouchableOpacity,  
 } from 'react-native';
 import { withNavigation } from '@react-navigation/compat';
 

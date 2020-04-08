@@ -2,12 +2,16 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-// import HomeScreen from './src/screens/HomeScreen';
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import ReduxThunk from 'redux-thunk'
 import LoginScreen from './src/screens/LoginScreen'
-import LoginForm from './src/components/LoginForm'
 import ResetPassword from './src/screens/ResetPassword';
-import { SafeAreaView } from 'react-native';
+import SplashScreen from './src/screens/SplashScreen';
 
+
+
+import reducers from './store/reducers'
 
 
 const Stack = createStackNavigator();
@@ -21,16 +25,20 @@ const ScreenOptions = {
 
 export default function App() {
   return (
-    // <SafeAreaView>
+    <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk) )}>
     <NavigationContainer>
     <Stack.Navigator>
     {/* <Stack.Navigator headerMode='none'> */} 
+      <Stack.Screen
+        name="Splash"
+        component={SplashScreen}
+        options={ScreenOptions}
+      />
       <Stack.Screen
         name="Login"
         component={LoginScreen}
         options={ScreenOptions}
       />
-
       <Stack.Screen
         name="ResetPassword"
         component={ResetPassword}
@@ -43,9 +51,7 @@ export default function App() {
 
     </Stack.Navigator>
   </NavigationContainer>
-  // </SafeAreaView>
-
-  // <LoginScreen />
+</Provider>
   );
 }
 
