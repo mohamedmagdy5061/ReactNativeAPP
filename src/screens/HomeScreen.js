@@ -28,7 +28,7 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.rowContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('MarketSearch')}>
           <Image
             style={styles.todo}
             source={require('../../assets/superMarket.jpg')}

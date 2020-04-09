@@ -10,7 +10,7 @@ export function overWriteAxiosConfigurations(baseUrl = '', timeout = 10000) {
 
 axiosInstance.interceptors.request.use(function (config) {
 //   config.headers['x-user-token'] = 'cookies("hubToken")';
-  config.headers['Authorization'] = ' 7Oa2TR8-ehNazqK6Nd_-XhoguERccJqGc1pAmGXnYx';
+  config.headers['Authorization'] = 'Bearer fj9EPdrdS2IVqHz6U_78AO-7Oa2TR8-ehNazqK6Nd_f-PzFWLA1bR6Yen1TI0hrKjNlZMcrSgUPa4FA9VYAluNEaoaN6yxJWrhRbNS2Rt-XhoguERccJqGc1pAmGXnYx';
   return config;
 });
 

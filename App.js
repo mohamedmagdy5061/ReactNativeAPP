@@ -14,6 +14,12 @@ import LogOut from './src/components//LogOut';
 import RestaurantsList from './src/components/restaurants/RestaurantsList';
 import RestaurantInfo from './src/components/restaurants/RestaurantInfo';
 import Todo from './src/components/todo/Todo';
+import MarketSearch from './src/components/superMarket/MarketSearch';
+import MarketInfo from './src/components/superMarket/MarketInfo';
+
+
+
+
 
 import reducers from './store/reducers';
 
@@ -94,6 +100,25 @@ export default function App() {
               headerShown: true
             }}
           />
+            <Stack.Screen
+            name="MarketSearch"
+            component={MarketSearch}
+            options={{
+              ...ScreenOptions,
+              title: '',
+              headerShown: true
+            }}
+          />
+
+<Stack.Screen
+          name="MarketInfo"
+          component={MarketInfo}
+          options={{
+            ...ScreenOptions,
+            title: 'Market Info',
+            headerShown: true
+          }}
+        />
           <Stack.Screen
             name="tabs"
             component={TabScreen}
