@@ -5,7 +5,7 @@ import {
   StyleSheet,
   Image,
 } from 'react-native';
-import StarsRating from './StarsRating';
+import StarsRating from '../StarsRating';
 
 
 const  RestaurantInfo = ({route}) => {
@@ -16,7 +16,9 @@ const  RestaurantInfo = ({route}) => {
             <Image style={styles.image} source={{uri: data.image}}  />
             <Text  style={styles.name} > {data.name}</Text>
             <Text>{data.address}</Text>
-            <StarsRating rating={data.rating} />
+            <View style={{flexDirection:'row'}}>
+                <StarsRating rating={data.rating} />
+            </View>
         </View>
     )
 }
@@ -25,7 +27,6 @@ const  RestaurantInfo = ({route}) => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-    //   justifyContent: 'center',
       alignItems: 'center',
       marginTop: 20
 

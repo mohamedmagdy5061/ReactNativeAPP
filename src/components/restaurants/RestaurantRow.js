@@ -11,7 +11,7 @@ import {
   TouchableHighlight
 } from 'react-native';
 import { withNavigation } from '@react-navigation/compat';
-import StarsRating from './StarsRating';
+import StarsRating from '../StarsRating';
 
 const RestaurantRow = ({ restaurant, index, navigation }) => {
   return (

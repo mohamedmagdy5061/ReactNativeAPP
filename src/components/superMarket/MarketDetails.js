@@ -1,12 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import StarsRating from '../StarsRating';
 
 const MarketDetails = ({ data }) => {
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={{ uri: data.image_url }} />
       <Text style={styles.name} >{data.name}</Text>
-      <Text style={styles.rate} >{data.rating} Stars, {data.review_count} Reviews</Text>
+      <View style={{ flexDirection: 'row', marginBottom: 20,  alignItems:'center'}}>
+        {data.rating && <StarsRating rating={data.rating} />}
+        <Text style={styles.reviews} >{data.review_count} Reviews</Text>
+      </View>
     </View>
   );
 };
@@ -25,8 +29,11 @@ const styles = StyleSheet.create({
   name: {
       fontWeight: 'bold'
   },
-  rate: {
-    
+  reviews: {
+    color: "gray",
+    marginLeft:5,
+    fontSize:12
+   
   }
 });
 

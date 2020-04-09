@@ -17,7 +17,6 @@ function FooterLogin( ) {
     <View style={styles.footer}>
       <TouchableOpacity
         style={styles.button}
-        // onPress={() => console.log('Forget password pressed',navigation)}
         onPress={() => navigation.navigate('ResetPassword')}
 
       >
