@@ -5,10 +5,14 @@ import {
   Text,
   TouchableOpacity,  
 } from 'react-native';
-import { withNavigation } from '@react-navigation/compat';
+// import { withNavigation } from '@react-navigation/compat';
+import { useNavigation } from '@react-navigation/native';
 
 
-function FooterLogin({ navigation }) {
+
+function FooterLogin( ) {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.footer}>
       <TouchableOpacity
@@ -45,4 +49,5 @@ const styles = StyleSheet.create({
   }
 });
 
-export default withNavigation(FooterLogin);
+// export default withNavigation(FooterLogin);
+export default FooterLogin;

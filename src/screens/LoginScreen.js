@@ -16,7 +16,7 @@ import FooterLogin from '../components/FooterLogin'
 // import { loginUser } from '../../store/actions'
 
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   return (
     <>
     <KeyboardAvoidingView
@@ -26,7 +26,7 @@ const LoginScreen = () => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={{backgroundColor:'#FFF',flex:1}}>
       <Logo />
-      <LoginForm />
+      <LoginForm navigation={navigation} />
       <FooterLogin />
       </View>
       </TouchableWithoutFeedback>

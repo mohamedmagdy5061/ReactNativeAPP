@@ -7,28 +7,23 @@ import {
   TouchableOpacity,
   ActivityIndicator
 } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-
 import { connect } from 'react-redux';
-import { loginUser } from '../../store/actions'
+import { loginUser } from '../../store/actions';
 
+const LoginForm = ({ navigation, error, user, loading }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-
-
-const LoginForm = (props) => {
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('')
-
-    const handleSignIn = () => {
-        console.log('Sign In pressed',props)
-        setIsLoaded(true);
-        setTimeout(() => {
-             setIsLoaded(false)
-             loginUser({ email, password })
-        },3000)
-       
-    }
+  const handleSignIn = () => {
+    console.log('Sign In pressed', navigation);
+    setIsLoaded(true);
+    setTimeout(() => {
+      setIsLoaded(false);
+      loginUser({ email, password });
+      navigation.navigate('HomeScreen');
+    }, 3000);
+  };
 
   return (
     <View style={styles.formContainer}>
@@ -36,9 +31,9 @@ const LoginForm = (props) => {
         style={styles.input}
         placeholder="Email"
         placeholderTextColor="rgba(0, 0, 0, 0.55)"
-        autoCapitalize='none'
+        autoCapitalize="none"
         autoCorrect={false}
-        keyboardType='email-address'
+        keyboardType="email-address"
         value={email}
         onChangeText={email => setEmail(email)}
       />
@@ -46,24 +41,23 @@ const LoginForm = (props) => {
         style={styles.input}
         placeholder="Password"
         placeholderTextColor="rgba(0, 0, 0, 0.55)"
-        autoCapitalize='none'
+        autoCapitalize="none"
         autoCorrect={false}
         secureTextEntry
         value={password}
         onChangeText={password => setPassword(password)}
       />
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleSignIn}
-      >
-        {!isLoaded ? <Text style={styles.textButton}> Sign In 
-        {/* <Ionicons name="md-checkmark-circle" size={32} color="green" /> */}
-        </Text> :
-        <ActivityIndicator  style={styles.textButton}  color="rgba(255, 255, 255, 0.8)" />}
-
+      <TouchableOpacity style={styles.button} onPress={handleSignIn}>
+        {!isLoaded ? (
+          <Text style={styles.textButton}> Sign In</Text>
+        ) : (
+          <ActivityIndicator
+            style={styles.textButton}
+            color="rgba(255, 255, 255, 0.8)"
+          />
+        )}
       </TouchableOpacity>
     </View>
-    
   );
 };
 
@@ -71,16 +65,15 @@ const mapStateToProps = state => {
   return {
     user: state.auth.user,
     loading: state.auth.loading,
-    error: state.auth.error,
-  }
-}
-
+    error: state.auth.error
+  };
+};
 
 const styles = StyleSheet.create({
   formContainer: {
     flex: 2,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   input: {
     backgroundColor: '#439889',
@@ -98,8 +91,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#004d40',
     alignSelf: 'center',
     width: '80%',
-    marginVertical: 5,
-
+    marginVertical: 5
   },
   textButton: {
     fontSize: 16,
@@ -110,5 +102,7 @@ const styles = StyleSheet.create({
 });
 
 // export default LoginForm;
-export default connect(mapStateToProps, {loginUser} )(LoginForm);
-
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(LoginForm);

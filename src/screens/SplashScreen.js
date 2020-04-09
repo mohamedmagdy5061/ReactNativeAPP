@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Animated, Text, Image } from 'react-native';
+import { StyleSheet, View, Animated, Text } from 'react-native';
 
 function SplashScreen({navigation}) {
   const [value] = useState(new Animated.Value(0));
@@ -34,7 +34,7 @@ function SplashScreen({navigation}) {
         source={require('../../assets/car-wash2.png')}
         resizeMode="cover"
       />
-      <Text style={styles.text}>Car Care</Text>
+      <Text style={styles.text}>My App</Text>
     </View>
   );
 }

@@ -1,40 +1,63 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
-import TodoList from '../components/TodoList' 
+import React from 'react';
+import {
+  StyleSheet,
+  View,
+  Image,
+  TouchableOpacity
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 const HomeScreen = () => {
-    const [todo, setTodo] = useState('')
-    const [todoLists, setTodoLists] = useState([])
-
-    const handleInputTodo = (inputValue) => {
-        setTodo(inputValue);
-
-    }
-    const handleAddTodoButton = () => {
-        setTodoLists( todoLists => [...todoLists, todo] ) ;
-        setTodo('');
-
-    }
-
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-        <View style={styles.inputContainer} >
-            <TextInput 
-                placeholder='Add todo'
-                style={styles.input}
-                value={todo}
-                onChangeText={handleInputTodo}
-                />
-            <Button title='ADD' onPress={handleAddTodoButton}  />
-        </View>
-        <View>
-            {todoLists.map(item => <TodoList data={item} />) }
-        </View>
+      <View style={styles.rowContainer}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Todo')}>
+          <Image
+            style={styles.todo}
+            source={require('../../assets/todo6.png')}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('RestaurantsList')}>
+          <Image
+            style={styles.todo}
+            source={require('../../assets/restaurant3.png')}
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.rowContainer}>
+        <TouchableOpacity style={styles.button}>
+          <Image
+            style={styles.todo}
+            source={require('../../assets/superMarket.jpg')}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Image
+            style={styles.todo}
+            source={require('../../assets/hotel.jpg')}
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.rowContainer}>
+        <TouchableOpacity style={styles.button}>
+          <Image
+            style={styles.todo}
+            source={require('../../assets/transport.jpeg')}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Image
+            style={styles.todo}
+            source={require('../../assets/hospital.jpg')}
+          />
+        </TouchableOpacity>
+      </View>
     </View>
   );
-}
-
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -42,20 +65,32 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 30
   },
-  input: {
-    backgroundColor: '#F0EEEE',
-    paddingVertical: 10,
-    borderColor: '#FEEEEE',
-    borderWidth: 1,
-    borderRadius: 3,
-    flex:3,
-    paddingHorizontal: 5
+  rowContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    marginBottom: 15
   },
-  inputContainer: {
-    flexDirection: 'row'
+  button: {
+    padding: 10,
+    borderColor: '#bbb',
+    borderWidth: 1,
+    backgroundColor: '#439889',
+    borderRadius: 4
+  },
+  todo: {
+    width: 100,
+    height: 100,
+    borderColor: '#000',
+    borderWidth: 2,
+    backgroundColor:"#fff"
+  },
+  restaurant: {
+    width: 100,
+    height: 100,
+    borderColor: '#000',
+    borderWidth: 2
   }
-
 });
 
-
-export default HomeScreen
+export default HomeScreen;
